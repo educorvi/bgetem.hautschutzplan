@@ -1,0 +1,21 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="bgetem.hautschutzplan">
+
+  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
+  <include package="z3c.jbot" file="meta.zcml" />
+  <browser:jbot
+      directory="overrides"
+      layer="bgetem.hautschutzplan.interfaces.IBgetemHautschutzplanLayer"
+      />
+
+  <!-- Publish static files -->
+  <plone:static
+      name="bgetem.hautschutzplan"
+      type="plone"
+      directory="static"
+      />
+
+</configure>
