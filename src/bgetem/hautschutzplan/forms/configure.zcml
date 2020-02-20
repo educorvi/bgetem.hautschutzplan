@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="bgetem.hautschutzplan">
+
+  <include package="plone.z3cform" />
+
+  <browser:page
+    name="taetigkeit-form"
+    for="*"
+    class=".taetigkeit_form.TaetigkeitForm"
+    permission="zope2.View"
+    />
+
+  <browser:page
+    name="biologie-form"
+    for="*"
+    class=".biologie_form.BiologieForm"
+    permission="zope2.View"
+    />
+
+</configure>
