@@ -13,23 +13,22 @@ from bgetem.hautschutzplan import _
 
 from bgetem.hautschutzplan.forms.vocabularies import biogefahr, vocab_schichtstaerke, vocab_stulpenlaenge, dummy_gefahrstoffe
 
-class IBiologieForm(model.Schema):
-
-    biogefaehrdung = schema.Choice(title=u"Mit folgenden biologischen Gefährdungen ist diese Tätigkeit verbunden:",
-                            vocabulary=biogefahr,
-                            default=u"bakterien_pilze",
-                            required=True)
-
-    model.fieldset(
-         'weitere-gefaehrdungen',
-        label=_(u"Weitere Gefährdungen"),
-        fields=['gefahrstoffe', 'mechanik']
-        )
+class IChemieForm(model.Schema):
 
     gefahrstoffe = schema.List(title=u"Chemische Gefährdungen",
                             description=u"Folgende Gefahrstoffe kommen bei dieser Tätigkeit zur Anwendung:",
                             value_type=schema.Choice(vocabulary=dummy_gefahrstoffe),
                             required=False)
+
+    model.fieldset(
+         'weitere-gefaehrdungen',
+        label=_(u"Weitere Gefährdungen"),
+        fields=['biogefaehrdung', 'mechanik']
+        )
+
+    biogefaehrdung = schema.Choice(title=u"Mit folgenden biologischen Gefährdungen ist diese Tätigkeit verbunden:",
+                            vocabulary=biogefahr,
+                            required=True)
 
     mechanik = schema.Bool(title=u"Mechanische Gefährdungen",
                             description=u"(Beispiel: Arbeit mit spitzen oder scharfkantigen Gegenstände, Stosseinwirkung)",
@@ -58,20 +57,20 @@ class IBiologieForm(model.Schema):
                             required=False)
   
 
-class BiologieForm(AutoExtensibleForm, form.Form):
+class ChemieForm(AutoExtensibleForm, form.Form):
 
-    label = u"Tätigkeit mit biologischer Gefährdung"
+    label = u"Tätigkeit mit chemischer Gefährdung"
     description = u"Hand -und Hautschutzprodukte für diese Tätigkeit suchen"
     ignoreContext = True
     #enable_form_tabbing  = False #Disable Tabs in Form
     default_fieldset_label = u"Standard" #Beschriftung des Standard-Fieldsets
  
     #fields = field.Fields(ITaetigkeitForm)
-    schema = IBiologieForm
+    schema = IChemieForm
     #template = ViewPageTemplateFile('mytemplate.pt')
 
     def updateWidgets(self):
-        super(BiologieForm, self).updateWidgets()
+        super(ChemieForm, self).updateWidgets()
         #self.widgets["title"].value = self.context.title
 
     @button.buttonAndHandler(u'Weiter')

@@ -20,4 +20,11 @@
     permission="zope2.View"
     />
 
+  <browser:page
+    name="chemie-form"
+    for="*"
+    class=".chemie_form.ChemieForm"
+    permission="zope2.View"
+    />
+
 </configure>
