@@ -18,4 +18,15 @@
       directory="static"
       />
 
+  <include package="plone.z3cform" />
+
+  <browser:page
+    name="testform"
+    for="*"
+    class=".testform.TestForm"
+    permission="zope2.View"
+    />
+
+
+
 </configure>

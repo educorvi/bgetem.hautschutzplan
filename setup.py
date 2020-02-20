@@ -54,6 +54,7 @@ setup(
         'plone.api>=1.8.4',
         'plone.restapi',
         'plone.app.dexterity',
+        'plone.formwidget.autocomplete==1.4.0',
     ],
     extras_require={
         'test': [

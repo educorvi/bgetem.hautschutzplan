@@ -13,7 +13,9 @@
   -->
   <!--<includeDependencies package="." />-->
 
+  <include package="plone.z3cform" />
   <include package=".browser" />
+  <include package=".forms" />
 
   <include file="permissions.zcml" />
 
@@ -41,7 +43,5 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
-
-  <include package=".views" />
 
 </configure>
